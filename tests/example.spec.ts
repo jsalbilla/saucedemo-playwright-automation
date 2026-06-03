@@ -31,4 +31,10 @@ test.describe('Login Functionality', () => {
     await expect(page.locator('[data-test="inventory-item"]')).toHaveCount(6);
   });
 
+    test('validation for locked accounts', async ({ page, loginPage }) => {
+    await loginPage.loginFunctionality('locked_out_user', 'secret_sauce');
+    await expect(page.locator('[data-test="error-button"]')).toBeVisible();
+    await expect(page.locator('[data-test="error"]')).toHaveText('Epic sadface: Sorry, this user has been locked out.');
+  });
+
 });
