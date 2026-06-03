@@ -1,0 +1,23 @@
+{
+  "name": "saucedemo-playwright-automation",
+  "version": "1.0.0",
+  "description": "E2E automation framework for SauceDemo test site, using Playwright and TypeScript as Techstack.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsalbilla/saucedemo-playwright-automation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jsalbilla/saucedemo-playwright-automation/issues"
+  },
+  "homepage": "https://github.com/jsalbilla/saucedemo-playwright-automation#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.1"
+  }
+}
