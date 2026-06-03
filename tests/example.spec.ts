@@ -1,18 +1,34 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../lib/fixtures/login.fixture';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test.describe('Login Functionality', () => {
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
-});
+  // TC-LOGIN-001
+  test('should show validation for invalid username', async ({ page, loginPage }) => {
+    await loginPage.loginFunctionality('sample_user', 'secret_sauce');
+    await expect(page.locator('[data-test="error-button"]')).toBeVisible();
+    await expect(page.locator('[data-test="error"]')).toHaveText('Epic sadface: Username and password do not match any user in this service');
+  });
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+  // TC-LOGIN-002
+  test('should show validation for invalid password', async ({ page, loginPage }) => {
+    await loginPage.loginFunctionality('standard_user', 'secret_flavor');
+    await expect(page.locator('[data-test="error-button"]')).toBeVisible();
+    await expect(page.locator('[data-test="error"]')).toHaveText('Epic sadface: Username and password do not match any user in this service');
+  });
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
+  // TC-LOGIN-003
+  test('should show validation for invalid username and password', async ({ page, loginPage }) => {
+    await loginPage.loginFunctionality('sample_user', 'secret_flavor');
+    await expect(page.locator('[data-test="error-button"]')).toBeVisible();
+    await expect(page.locator('[data-test="error"]')).toHaveText('Epic sadface: Username and password do not match any user in this service');
+  });
 
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+  // TC-LOGIN-004
+  test('should login successfully', async ({ page, loginPage }) => {
+    await loginPage.loginFunctionality('standard_user', 'secret_sauce');
+    await expect(page.locator('[data-test="inventory-container"]')).toBeVisible();
+    await expect(page.locator('[data-test="inventory-list"]')).toBeVisible();
+    await expect(page.locator('[data-test="inventory-item"]')).toHaveCount(6);
+  });
+
 });
