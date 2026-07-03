@@ -20,7 +20,10 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
         env:
-          BASE_URL: https://www.saucedemo.com
+          SAUCEDEMO_BASE_URL: https://www.saucedemo.com
+          RESTFUL_BOOKER_BASE_URL: https://restful-booker.herokuapp.com
+          RESTFUL_BOOKER_USERNAME: admin
+          RESTFUL_BOOKER_PASSWORD: password123
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
