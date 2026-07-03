@@ -17,6 +17,13 @@ TypeScript was used to make the code easier to read, structure, and maintain.
 ## Project Structure
 
 ```text
+-fixtures - handles all the preparation, in this file I initialize all the Page Object Model.
+-pages - this handles all the Page Object Models where I create all the locators and grouping of functions. I also notice that saucedemo uses test-data so I used it as my main locator which is a very good practice. 
+-datafactory - this handles all the test data for the API testing. This is for scalability and maintanability. 
+-tests - this is were all the test cases live both both UI and API. 
+
+Eventhough, this is a small automation suite, my approach is to make it scalable and easy to maintain. 
+
 .
 ├── lib/
 │   └── fixtures/
