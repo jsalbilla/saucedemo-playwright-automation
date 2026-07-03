@@ -1,6 +1,6 @@
-import { test, expect } from '../lib/fixtures/login.fixture';
+import { test, expect } from '../lib/fixtures/saucedemo.fixture';
 
-test.describe('Login Functionality', () => {
+test.describe(' Saucedemo - Login Functionality', () => {
 
   // TC-LOGIN-001 - Verify if the validation will appear for invalid Username
   test('should show validation for invalid username', async ({ loginPage }) => {
