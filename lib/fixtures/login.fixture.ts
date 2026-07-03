@@ -1,16 +1,23 @@
-import { test as BaseTest} from '@playwright/test';
+import { test as base, expect } from '@playwright/test';
 import { LoginPage } from '../pages/login.pages';
+import { AddToCartPage } from '../pages/addToCart.page';
 
-interface loginPageFixture {
+interface MyPages {
     loginPage: LoginPage;
+    addToCart: AddToCartPage;
 }
 
-export const test = BaseTest.extend<loginPageFixture>({
+export const test = base.extend<MyPages>({
     loginPage: async ({ page }, use) => {
         const loginPage = new LoginPage(page);
         await page.goto('/');
         await use(loginPage);
+    },
+
+    addToCart: async ({ page }, use) => {
+        const addToCart = new AddToCartPage(page);
+        await use(addToCart);
     }
 });
 
-export { expect } from '@playwright/test';
+export { expect };

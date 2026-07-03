@@ -20,7 +20,7 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
         env:
-          BASE_URL: https://www.saucedemo.com # ← add this
+          BASE_URL: https://www.saucedemo.com
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
