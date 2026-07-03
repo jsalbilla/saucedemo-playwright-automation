@@ -93,12 +93,6 @@ Run all UI and API tests:
 npx playwright test
 ```
 
-Run only the UI tests:
-
-```bash
-npx playwright test tests/ui
-```
-
 Run only the API tests:
 
 ```bash
