@@ -1,4 +1,4 @@
-import { test, expect } from "../lib/fixtures/saucedemo.fixture";
+import { test, expect } from "../../lib/fixtures/saucedemo.fixture";
 
 test.describe('Checkout Page Functionality', () => {
     test('should check if the correct items were added to the cart', async ({ checkoutReadyCart }) => {

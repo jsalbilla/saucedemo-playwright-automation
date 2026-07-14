@@ -1,4 +1,4 @@
-import { test, expect } from '../lib/fixtures/saucedemo.fixture';
+import { test, expect } from '../../lib/fixtures/saucedemo.fixture';
 
 test.describe(' Saucedemo - Login Functionality', () => {
 

@@ -2,12 +2,14 @@ import { test as base, expect } from '@playwright/test';
 import { LoginPage } from '../pages/login.pages';
 import { AddToCartPage } from '../pages/addToCart.page';
 import { CheckoutPage } from '../pages/checkout.page';
+import { FilterPage } from '../pages/filter.page';
 
 interface MyPages {
     loginPage: LoginPage;
     addToCart: AddToCartPage;
     checkoutReadyCart: AddToCartPage
     checkoutPage: CheckoutPage
+    filterPage: FilterPage
 }
 
 export const test = base.extend<MyPages>({
@@ -36,7 +38,15 @@ export const test = base.extend<MyPages>({
     checkoutPage: async ({ page }, use) => {
         const checkoutPage = new CheckoutPage(page)
         await use(checkoutPage)
+    },
+
+    filterPage: async ({ loginPage, page }, use) => {
+        const filterPage = new FilterPage(page)
+        await loginPage.loginFunctionality('standard_user', 'secret_sauce');
+        await use(filterPage)
     }
+
+
 
 });
 
